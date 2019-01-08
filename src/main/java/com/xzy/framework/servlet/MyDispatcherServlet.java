@@ -389,3 +389,10 @@ public class MyDispatcherServlet extends HttpServlet {
         System.out.println(handlerMapping.get(url));
         */
 }
+/*
+    上文中被注释的这一段本来是按照这个思路写的 但是到后面method.invoke(obj, args);
+    这一步的时候坑来了。obj实例对象和实力参数好像没有，实验了好几种办法都不能实现彻底绝望了，
+        后面又重新找资料  用的后面那种 加了一个handler的数据结构，
+        将每次获取到的实例对象和实例参数保存在一个List<handler>结构中才解决这个问题。
+        没有看spring源码是如何实现的，
+        估计spring实现应该是更好的办法，只能下次再去细看了。个人觉得文中的注释还是写的比较详细的，以及思路也还算详细*/
