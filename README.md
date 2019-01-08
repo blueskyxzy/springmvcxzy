@@ -6,3 +6,6 @@
 3.反射机制
 4.自定义注解
 5.设计模式(简单实现则不需要)
+
+
+可访问的接口：http://localhost:8080/demo/query?name=xzy
