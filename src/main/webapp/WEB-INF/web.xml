@@ -3,7 +3,7 @@
     <display-name>mySpring</display-name>
     <servlet>
         <servlet-name>xzy</servlet-name>
-        <servlet-class>com.xzy.framework.servlet.MyDispatcherServlet</servlet-class>
+        <servlet-class>com.xzy.framework.servlet.XzyDispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>application.properties</param-value>
