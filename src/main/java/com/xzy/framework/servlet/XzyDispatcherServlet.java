@@ -84,6 +84,8 @@ public class XzyDispatcherServlet extends HttpServlet {
                     // 获取MyRequestMapping注解的url值
                     MyRequestMapping requestMapping = clazz.getAnnotation(MyRequestMapping.class);
                     controllerPath = requestMapping.value();
+                } else {
+                    continue;
                 }
 
                 // 获取方法上的RequestMapping的url
@@ -93,7 +95,7 @@ public class XzyDispatcherServlet extends HttpServlet {
                     if (method.isAnnotationPresent(MyRequestMapping.class)) {
                         MyRequestMapping methodAnnotation = method.getAnnotation(MyRequestMapping.class);
                         methodPath = methodAnnotation.value();
-                    }
+                    } else continue;
                     String path = controllerPath + methodPath;
                     Pattern pattern = Pattern.compile(path);
                     handlerMappings.add(new Handler(pattern, entry.getValue(), method));
@@ -143,7 +145,6 @@ public class XzyDispatcherServlet extends HttpServlet {
                 Class<?> clazz = Class.forName(className);
                 // 扫描有自定义注解MyController的controller类
                 if (clazz.isAnnotationPresent(MyController.class)) {
-                    MyController controller = clazz.getAnnotation(MyController.class);
                     try {
                         Object instance = clazz.newInstance();
 //                        MyRequestMapping myRequestMapping = clazz.getAnnotation(MyRequestMapping.class);
@@ -161,6 +162,9 @@ public class XzyDispatcherServlet extends HttpServlet {
                         Object instance = clazz.newInstance();
                         MyService myService = clazz.getAnnotation(MyService.class);
                         String value = myService.value();
+                        if (value.equals("")){
+                            value = clazz.getSimpleName();
+                        }
                         beansMap.put(value, instance);
                     } catch (InstantiationException e) {
                         e.printStackTrace();
