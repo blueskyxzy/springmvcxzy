@@ -149,7 +149,7 @@ public class XzyDispatcherServlet extends HttpServlet {
 //                        MyRequestMapping myRequestMapping = clazz.getAnnotation(MyRequestMapping.class);
 //                        String mappingValue = myRequestMapping.value();
 //                        beansMap.put(mappingValue, instance);
-                        beansMap.put(controller.getClass().getName(), instance);
+                        beansMap.put(clazz.getSimpleName(), instance);
                     } catch (InstantiationException e) {
                         e.printStackTrace();
                     } catch (IllegalAccessException e) {
